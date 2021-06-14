@@ -25,7 +25,7 @@ p {
 
 h3 {
   color: var(--primary);
-  font-weight: 600;
+  font-weight: 500;
   opacity: 0.8;
 }
 
@@ -48,7 +48,7 @@ main {
 }
 
 .glass {
-  background: white;
+  /* background: white; */
   min-height: 80vh;
   width: 60%;
   background: linear-gradient(
@@ -59,6 +59,7 @@ main {
   border-radius: 2rem;
   z-index: 2;
   backdrop-filter: blur(1.5rem);
+
   display: flex;
 }
 
@@ -70,10 +71,29 @@ main {
     rgba(255, 255, 255, 0.5)
   );
 
+  /*
+  for mozilla: 
+  background: linear-gradient( to left bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) );
+  */
+
   height: 18rem;
   width: 18rem;
   position: absolute;
   border-radius: 50%;
+}
+
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .circle1 {
+    background: linear-gradient(
+      to left bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0)
+    );
+    height: 18rem;
+    width: 18rem;
+    position: absolute;
+    border-radius: 50%;
+  }
 }
 
 .circle1 {
@@ -143,3 +163,78 @@ main {
 }
 
 /* GAMES SECTION */
+
+.status {
+  margin-bottom: 3rem;
+}
+
+.status input {
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+
+  border: none;
+  width: 50%;
+  padding: 0.5rem;
+  border-radius: 2rem;
+}
+
+.games {
+  margin: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.card {
+  display: flex;
+  background: linear-gradient(
+    to left top,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.5)
+  );
+  border-radius: 1rem;
+  margin: 2rem 0;
+  padding: 2rem;
+  box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+  justify-content: space-between;
+}
+
+.progress {
+  background: linear-gradient(to right top, var(--bg-left), var(--bg-right));
+  width: 100%;
+  height: 25%;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden; /* so that we don't have an overflow of the after content element, so that it sticks to this*/
+}
+
+.progress::after {
+  content: '';
+  /* display: block; */
+  width: 100%;
+  height: 100%;
+  background: rgb(236, 236, 236);
+  position: absolute;
+  left: 60%;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.percentage {
+  font-weight: bold;
+  background: linear-gradient(
+    to right top,
+    var(--bg-left),
+    var(--bg-right)
+  ); /* The color for our text*/
+  -webkit-background-clip: text; /* This will add linear gradient on our text*/
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* This will add linear gradient on our text*/
+}
